@@ -1,0 +1,29 @@
+<ng-container *ngIf="parking$ | async as parking; then parkingInfo; else loader"></ng-container>
+
+<ng-template #parkingInfo let-parking>
+    <mat-card class="parking-detail">
+        <mat-card-header>
+            <mat-card-title>{{ parking.nom }}</mat-card-title>
+            <mat-card-subtitle [ngStyle]="helper.calculStyleStatut(parking)">{{ parking.statut }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <span>Places disponibles : {{ parking.nbPlacesDispo }}</span><br>
+            <span>Places au total : {{ parking.nbPlacesTotal }}</span><br>
+            <br>
+            <span style="font-style: italic;">Dernière mise à jour à {{ parking.heureMaj }}.</span><br>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="parking-detail" *ngIf="!parking">
+        <strong>ERREUR : Parking inconnu !</strong>
+    </mat-card>
+</ng-template>
+
+<ng-template #loader>
+    <mat-spinner style="margin: 20px auto" color="accent" diameter="30"></mat-spinner>
+</ng-template>
+
+<div style="display: flex; justify-content: center; margin-top: 20px">
+  <button mat-icon-button [routerLink]="['/parkings']">
+    <mat-icon color="primary">home</mat-icon>
+  </button>
+</div>

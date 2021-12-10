@@ -1,0 +1,23 @@
+package com.formation.parking;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class ParkingApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ParkingApplication.class, args);
+	}
+
+	@Bean
+	public RestTemplate restTemplace(RestTemplateBuilder restTemplateBuilder) {
+		return restTemplateBuilder.build();
+	}
+
+}

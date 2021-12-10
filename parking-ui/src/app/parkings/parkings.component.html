@@ -1,0 +1,24 @@
+<ng-container *ngIf="(parkings$ | async) as parkings; then parkingList; else loader" >
+</ng-container>
+
+<ng-template #parkingList let-parkings>
+    <!-- TOUT EST PASSÉ À UN COMPOSANT ENFANT :) cf.app-parking -->
+    <app-parking *ngFor="let parking of parkings; index as index; count as parkingCount; trackBy:trackByParkingId;
+        first as isFirst; last as isLast; odd as isOdd; even as isEven"
+        [index]="index"
+        [parkingCount]="parkingCount"
+        [isFirst]="isFirst"
+        [isLast]="isLast"
+        [isOdd]="isOdd"
+        [isEven]="isEven"
+        [parking]="parking">
+    </app-parking>
+</ng-template>
+
+<ng-template #loader>
+    <mat-spinner 
+    style="margin: auto" 
+    color="accent" 
+    diameter="30"></mat-spinner>
+</ng-template>
+

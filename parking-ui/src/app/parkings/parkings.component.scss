@@ -1,0 +1,14 @@
+.parking-card {
+    margin: 5px 20px;
+    cursor: pointer;
+}
+
+.parking-card.odd {
+    background-color: rgb(104, 104, 104);
+}
+
+.spinner {
+    margin : auto;
+    color: accent;
+    size: 30px;
+}

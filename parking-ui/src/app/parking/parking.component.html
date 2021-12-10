@@ -1,0 +1,19 @@
+<mat-card 
+    [routerLink]="['/parking', parking.identifiant]" 
+    class="parking-card"
+    [ngClass]="{'odd': isOdd}">
+
+        <!-- POUR DEBUGAGE PAR EXEMPLE OU CTRL DES DONNEES -->
+        <!-- MODELE CLE/VALEUR : -->
+        <!-- <p *ngFor="let prop of parking | keyvalue">{{prop.key}}:{{prop.value}}</p> -->
+        <!-- ENCORE MIEUX :) MODELE JSON : -->
+        <!-- <p>{{ parking | json }}</p> -->
+        <!-- FIN POUR DEBUGAGE PAR EXEMPLE OU CTRL DES DONNEES -->
+
+        <span style="font-weight: bold">{{ index+1 }}/{{ parkingCount }} - Parking {{parking.nom}}</span>
+        <span style="float: right" [ngStyle]="helper.calculStyleStatut(parking)">{{ parking.statut }}</span>
+        <br>
+        <span *ngIf="parking.statut !== 'Données non disponibles'">Places disponibles : {{ parking.nbPlacesDispo }}</span>
+        <span *ngIf="isFirst"><br><small>(premier parking)</small></span>
+        <span *ngIf="isLast"><br><small>(dernier parking)</small></span>
+    </mat-card>
